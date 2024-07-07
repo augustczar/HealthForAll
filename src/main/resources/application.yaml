@@ -1,0 +1,43 @@
+server:
+  port: ${SERVER_PORT}
+  servlet:
+    context-path: '/healtforall/'  
+spring:
+  application:
+    name: healthforall
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${POSTGRE_URL}/HealthInsurance
+    username: ${POSTGRE_USERNAME}
+    password: ${POSTGRE_PASSWORD}
+      
+  jpa:
+    show-sql: true
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: update 
+            
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html      
+
+openapi:
+  server:
+    url: ${OPEN_API_SERVER_URL}
+
+api:
+ security:
+  tocken: 
+    secret: ${JWT_SECRET:my-secret-key}           
+ authorization:
+  header: ${AUTHORIZATION_HEADER}
+  generates:
+    expiration:
+      hours: ${GENERATES_EXPIRATION_HOURS}           
+#Configuração para windows terminal padrao de cores            
+  output:
+    ansi:
+      enabled: always
+                
