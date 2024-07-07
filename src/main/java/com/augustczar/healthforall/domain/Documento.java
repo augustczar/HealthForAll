@@ -1,6 +1,7 @@
 package com.augustczar.healthforall.domain;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -30,7 +31,7 @@ public class Documento {
 	@Id
 	@EqualsAndHashCode.Include
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private UUID id;
 	private String tipoDocumento;
 	private String descricao;
 	private LocalDateTime dataInclusao;
