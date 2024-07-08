@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.augustczar.healthforall.domain.Beneficiario;
 
-@Service
 public interface BeneficiarioService {
 
     public Beneficiario save(Beneficiario beneficiario);

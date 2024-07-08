@@ -1,7 +1,7 @@
 server:
   port: ${SERVER_PORT}
   servlet:
-    context-path: '/healtforall/'  
+    context-path: '/healthforall/'  
 spring:
   application:
     name: healthforall
@@ -22,10 +22,15 @@ springdoc:
     path: /api-docs
   swagger-ui:
     path: /swagger-ui.html      
-
+  
 openapi:
   server:
     url: ${OPEN_API_SERVER_URL}
+
+healthforall:
+  security:
+    username: healthforall
+    password: '01303c3d-398a-42b3-b78d-fc6ec5dd1421'
 
 api:
  security:
