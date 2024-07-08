@@ -1,10 +1,14 @@
 package com.augustczar.healthforall.domain;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -26,18 +30,21 @@ import lombok.Setter;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
 @Table(name = "TB_DOCUMENTO")
-public class Documento {
+public class Documento implements Serializable{
+	
+	private static final long serialVersionUID = -9088125514855165479L;
 	
 	@Id
 	@EqualsAndHashCode.Include
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private UUID id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private UUID documentoId;
 	private String tipoDocumento;
 	private String descricao;
 	private LocalDateTime dataInclusao;
 	private LocalDateTime dataAtualizacao;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "beneficiario_id")
+	@JsonProperty(access = Access.WRITE_ONLY)
+	@ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
+	@JoinColumn
 	private Beneficiario beneficiario;
 }

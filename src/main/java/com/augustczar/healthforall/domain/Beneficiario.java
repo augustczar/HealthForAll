@@ -1,15 +1,20 @@
 package com.augustczar.healthforall.domain;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -28,18 +33,21 @@ import lombok.Setter;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
 @Table(name = "TB_BENEFICIARIO")
-public class Beneficiario {
+public class Beneficiario implements Serializable {
 	
-    @Id
+    private static final long serialVersionUID = 4060764783326309032L;
+    
+	@Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private UUID beneficiarioId;
     private String nome;
     private String telefone;
     private LocalDate dataNascimento;
     private LocalDateTime dataInclusao;
     private LocalDateTime dataAtualizacao;
 
-    @OneToMany(mappedBy = "beneficiario", cascade = CascadeType.ALL, orphanRemoval = true)
+	@Fetch(FetchMode.SUBSELECT)
+	@OneToMany(mappedBy = "beneficiario", cascade = {CascadeType.ALL, CascadeType.REMOVE},  fetch = FetchType.LAZY)
     private List<Documento> documentos = new ArrayList<>();
 }

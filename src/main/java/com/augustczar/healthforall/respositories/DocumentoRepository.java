@@ -6,11 +6,12 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
+import com.augustczar.healthforall.domain.Beneficiario;
 import com.augustczar.healthforall.domain.Documento;
 
 @Component
 public interface DocumentoRepository extends JpaRepository<Documento, UUID> {
 
-	List<Documento> findByBeneficiarioId(UUID beneficiarioId);
+	List<Documento> findByBeneficiarioBeneficiarioId(UUID beneficiarioId);
 
 }

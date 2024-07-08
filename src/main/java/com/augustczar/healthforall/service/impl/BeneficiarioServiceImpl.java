@@ -1,6 +1,5 @@
 package com.augustczar.healthforall.service.impl;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -20,8 +19,6 @@ public class BeneficiarioServiceImpl implements BeneficiarioService {
 	
 	@Override
 	public Beneficiario save(Beneficiario beneficiario) {
-        beneficiario.setDataInclusao(LocalDateTime.now());
-        beneficiario.setDataAtualizacao(LocalDateTime.now());
         return beneficiarioRepository.save(beneficiario);
 	}
 
@@ -31,13 +28,13 @@ public class BeneficiarioServiceImpl implements BeneficiarioService {
 	}
 
 	@Override
-	public Optional<Beneficiario> findById(UUID id) {
-		return beneficiarioRepository.findById(id);
+	public Optional<Beneficiario> findById(UUID beneficiarioId) {
+		return beneficiarioRepository.findById(beneficiarioId);
 	}
 
 	@Override
-	public void deleteById(UUID id) {
-		beneficiarioRepository.deleteById(id);
+	public void deleteById(UUID beneficiarioId) {
+		beneficiarioRepository.deleteById(beneficiarioId);
 	}
 
 }

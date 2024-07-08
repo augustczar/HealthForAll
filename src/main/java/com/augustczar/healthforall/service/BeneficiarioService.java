@@ -15,8 +15,8 @@ public interface BeneficiarioService {
 
     public List<Beneficiario> findAll();
     
-    public Optional<Beneficiario> findById(UUID id);
+    public Optional<Beneficiario> findById(UUID beneficiarioId);
 
-    public void deleteById(UUID id);
+    public void deleteById(UUID beneficiarioId);
 
 }

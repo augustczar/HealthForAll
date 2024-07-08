@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.augustczar.healthforall.domain.Beneficiario;
 import com.augustczar.healthforall.domain.Documento;
 import com.augustczar.healthforall.respositories.DocumentoRepository;
 
@@ -14,10 +15,10 @@ public class DocumentoServiceImpl implements com.augustczar.healthforall.service
 
 	@Autowired
 	private DocumentoRepository documentoRepository;
-	
+
 	@Override
-	public List<Documento> findAllByBeneficiarioId(UUID beneficiarioId) {
-		return documentoRepository.findByBeneficiarioId(beneficiarioId);
+	public List<Documento> findByBeneficiarioId(UUID beneficiarioId) {
+		return documentoRepository.findByBeneficiarioBeneficiarioId( beneficiarioId);
 	}
 
 }

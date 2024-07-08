@@ -5,10 +5,10 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import com.augustczar.healthforall.domain.Beneficiario;
 import com.augustczar.healthforall.domain.Documento;
 
 @Service
 public interface DocumentoService {
-
-	public List<Documento> findAllByBeneficiarioId(UUID beneficiarioId);
+	List<Documento> findByBeneficiarioId(UUID beneficiarioId);
 }
