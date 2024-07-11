@@ -1,7 +1,6 @@
 package com.augustczar.healthforall.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -39,7 +38,7 @@ public class AuthenticationController {
 		var usernamePassword = new UsernamePasswordAuthenticationToken(authenticationDto.login(), authenticationDto.password());
 		var auth = this.authenticationManager.authenticate(usernamePassword);
 		
-		var token = tokenService.generationToken((User) auth.getPrincipal());
+		var token = tokenService.generationToken((Users) auth.getPrincipal());
 		
 		return ResponseEntity.ok(new LoginResponseDto(token.toString()));
 	}

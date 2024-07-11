@@ -10,9 +10,11 @@ import java.util.UUID;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -41,10 +43,22 @@ public class Beneficiario implements Serializable {
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID beneficiarioId;
+	
+	@Column(nullable = false, length = 50)
     private String nome;
+	
+	@Column(length = 20)
     private String telefone;
+	
+	@Column(nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private LocalDate dataNascimento;
+    
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime dataInclusao;
+    
+	@Column(nullable = false)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime dataAtualizacao;
 
 	@Fetch(FetchMode.SUBSELECT)

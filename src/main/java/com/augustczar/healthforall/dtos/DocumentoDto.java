@@ -1,8 +1,6 @@
 package com.augustczar.healthforall.dtos;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
-
+import com.augustczar.healthforall.enums.TipoDocumentos;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.AllArgsConstructor;
@@ -17,11 +15,8 @@ import lombok.Setter;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DocumentoDto {
 
-	private UUID documentoId;
-	private String tipoDocumento;
-	private String descricao;
-	private LocalDateTime dataInclusao;
-	private LocalDateTime dataAtualizacao;
+	private TipoDocumentos tipoDocumentos;
 	
-	private BeneficiarioDto beneficiariosDto;
+	private String descricao;
+
 }

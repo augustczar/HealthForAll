@@ -10,12 +10,14 @@ import com.augustczar.healthforall.domain.Beneficiario;
 
 public interface BeneficiarioService {
 
-    public Beneficiario save(Beneficiario beneficiario);
+	void delete(Beneficiario beneficiario);
 
-    public List<Beneficiario> findAll();
-    
-    public Optional<Beneficiario> findById(UUID beneficiarioId);
+	Optional<Beneficiario> findById(UUID beneficiarioId);
 
-    public void deleteById(UUID beneficiarioId);
+	List<Beneficiario> findAll();
+
+	Optional<Beneficiario> findByNome(String nome);
+
+	Beneficiario save(Beneficiario beneficiario);
 
 }

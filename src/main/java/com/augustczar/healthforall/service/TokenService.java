@@ -1,10 +1,10 @@
 package com.augustczar.healthforall.service;
 
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
+import com.augustczar.healthforall.domain.Users;
 
 public interface TokenService {
 
 	String validateToken(String token);
 
-	Object generationToken(User principal);
+	Object generationToken(Users principal);
 }

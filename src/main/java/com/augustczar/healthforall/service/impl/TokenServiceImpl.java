@@ -8,12 +8,12 @@ import java.time.ZoneOffset;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.augustczar.healthforall.domain.Users;
-import com.augustczar.healthforall.service.TokenService;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.augustczar.healthforall.domain.Users;
+import com.augustczar.healthforall.service.TokenService;
 
 @Service
 public class TokenServiceImpl implements TokenService{
@@ -24,12 +24,12 @@ public class TokenServiceImpl implements TokenService{
 //	@Value("${api.generates.expiration.hours}")
 //	private long HOURS;
 	
-	public String generationToken(Users usersModel) {
+	public String generationToken(Users users) {
 		try {
 			Algorithm algorithm = Algorithm.HMAC256(SECRET);
 			String token = JWT.create()
 					.withIssuer("auth-api")
-					.withSubject(usersModel.getLogin())
+					.withSubject(users.getLogin())
 					.withExpiresAt(generatesExpirationDate())
 					.sign(algorithm);
 			return token;

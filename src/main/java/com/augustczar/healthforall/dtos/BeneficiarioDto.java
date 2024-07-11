@@ -1,11 +1,10 @@
 package com.augustczar.healthforall.dtos;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.AllArgsConstructor;
@@ -20,13 +19,11 @@ import lombok.Setter;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BeneficiarioDto {
 	
-    private UUID beneficiarioId;
     private String nome;
     private String telefone;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private LocalDate dataNascimento;
-    private LocalDateTime dataInclusao;
-    private LocalDateTime dataAtualizacao;
 
-    private List<DocumentoDto> documentosDto = new ArrayList<>();
+    private List<DocumentoDto> documentosDtos = new ArrayList<>();
 }
 
